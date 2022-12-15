@@ -1,0 +1,12 @@
+.title-font{
+    font-size: 70px;
+}
+@media only screen and (max-width:678px){
+    .title{
+        bottom: 370px;
+    }
+    .title-font{
+        font-size: 27px;
+        font-weight: 700;
+    }
+}

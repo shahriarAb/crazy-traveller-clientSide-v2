@@ -5,6 +5,11 @@ import Loading from "../../Shared/Loading";
 const Destinations = () => {
    const [destinations, setDestinations] = useState([]);
    const [isLoading, setIsLoading] = useState(true);
+   const [visibleData, setVisibleData] = useState(6);
+
+   const showMore = () => {
+      setVisibleData((prevVisible) => prevVisible + 3);
+   };
 
    useEffect(() => {
       setIsLoading(true);
@@ -29,13 +34,29 @@ const Destinations = () => {
          </h4>
          <h2 className="text-4xl font-extrabold">TOP NOTCH DESTINATIONS</h2>
          <div className="mt-8 lg:mx-8 lg:grid lg:grid-cols-3 gap-8">
-            {destinations.map((destination) => (
+            {destinations.slice(0, visibleData).map((destination) => (
                <Destination
                   key={destination._id}
                   destination={destination}
                ></Destination>
             ))}
          </div>
+         {destinations.length !== visibleData ? (
+            <div className="flex justify-center mt-6">
+               <button
+                  onClick={showMore}
+                  className="btn btn-error btn-sm btn-outline"
+               >
+                  Load More Destination
+               </button>
+            </div>
+         ) : (
+            <div className="flex justify-center mt-6">
+               <h2 className="text-rose-600 text-lg font-semibold">
+                  That's all for now! Keep patient and stay tuned for more.
+               </h2>
+            </div>
+         )}
       </div>
    );
 };

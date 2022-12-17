@@ -38,13 +38,13 @@ const AddServices = () => {
          </h2>
          <form onSubmit={handleSubmit(onSubmit)}>
             <input
-               {...register("name", { required: true, maxLength: 20 })}
+               {...register("name", { required: true, maxLength: 25 })}
                placeholder="Destination Name"
             />
             <textarea {...register("description")} placeholder="Description" />
             <input type="number" {...register("price")} placeholder="Price" />
             <input {...register("img")} placeholder="Image URL" />
-            <input type="submit" />
+            <input className="btn btn-warning font-bold" type="submit" />
          </form>
          <ToastContainer />
       </div>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import Loading from "../Shared/Loading";
 
@@ -6,19 +7,30 @@ const MyBookings = () => {
    const { user } = useAuth();
    const [allbookings, setAllbookings] = useState([]);
    const [isLoading, setIsLoading] = useState(true);
+   const navigate = useNavigate();
+
+   console.log(allbookings);
 
    useEffect(() => {
       setIsLoading(true);
-      fetch("http://localhost:5500/bookings")
-         .then((res) => res.json())
+      fetch(`http://localhost:5500/my-bookings?email=${user.email}`, {
+         mathod: "GET",
+         headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+         },
+      })
+         .then((res) => {
+            if (res.status === 401 || res.status === 403) {
+               navigate("/");
+               localStorage.removeItem("accessToken");
+            }
+            return res.json();
+         })
          .then((data) => {
-            let myBookings = data.filter(
-               (myBook) => myBook.email === user.email
-            );
-            setAllbookings(myBookings);
+            setAllbookings(data);
             setIsLoading(false);
          });
-   }, []);
+   }, [user.email, navigate]);
 
    const handleCancel = (id) => {
       const proceedToDelete = window.confirm(
@@ -81,15 +93,35 @@ const MyBookings = () => {
                      <i className="fas fa-clock"></i> Time:{" "}
                      {myBooking.journey_time}
                   </span>
-                  <button
-                     onClick={() => handleCancel(myBooking._id)}
-                     className="bg-red-500 float-right text-white px-2 py-1 rounded-md hover:bg-red-600 hover:shadow-lg"
+                  <div
+                     className="tooltip float-right"
+                     data-tip={
+                        myBooking.status === "Approved"
+                           ? "You can't cancel this booking now."
+                           : "Cancel and delete the order before approval"
+                     }
                   >
-                     Cancel Book
-                  </button>
+                     <button
+                        onClick={() => handleCancel(myBooking._id)}
+                        className={
+                           myBooking.status === "Approved"
+                              ? "btn btn-disabled"
+                              : `btn bg-red-600 hover:shadow-lg`
+                        }
+                     >
+                        <i class="fas fa-info-circle mr-2 text-xl"></i> Cancel
+                        Book
+                     </button>
+                  </div>
                   <br />
                   Status:
-                  <span className="ml-2 bg-yellow-500 text-white px-2 py-1 rounded-md">
+                  <span
+                     className={
+                        myBooking.status === "Approved"
+                           ? "bg-green-500 ml-2 px-2 py-1 rounded-md"
+                           : "bg-yellow-500 ml-2 text-white px-2 py-1 rounded-md"
+                     }
+                  >
                      {" "}
                      {myBooking.status}
                   </span>

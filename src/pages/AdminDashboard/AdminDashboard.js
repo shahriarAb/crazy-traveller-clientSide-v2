@@ -32,15 +32,20 @@ export default function AdminDashboard() {
                htmlFor="dashboard-sidebar"
                className="drawer-overlay"
             ></label>
-            <ul className="menu p-4 w-80 bg-base-100 text-base-content">
+            <ul className="menu p-4 w-68 bg-base-100 text-base-content">
                <li className="my-1">
                   <Link to="/admin-dashboard">
-                     <i class="fas fa-home text-xl"></i> Dashboard Home
+                     <i class="fas fa-home text-xl"></i> Dashboard
                   </Link>
                </li>
                <li className="my-1">
                   <Link to="/admin-dashboard/manage-all-bookings">
                      <i class="fas fa-tools text-xl"></i> Manage All Bookings
+                  </Link>
+               </li>
+               <li className="my-1">
+                  <Link to="/admin-dashboard/manage-destinations">
+                     <i class="fas fa-hammer text-xl"></i> Manage Destinations
                   </Link>
                </li>
                <li className="my-1">
@@ -50,8 +55,13 @@ export default function AdminDashboard() {
                   </Link>
                </li>
                <li className="my-1">
-                  <Link to="/admin-dashboard/make-admin">
-                     <i class="fas fa-user-cog text-xl"></i> Make Someone Admin
+                  <Link to="/admin-dashboard/customer-review">
+                     Customer Review
+                  </Link>
+               </li>
+               <li className="my-1">
+                  <Link to="/admin-dashboard/users">
+                     <i class="fas fa-users text-xl"></i> All Users
                   </Link>
                </li>
                <li>

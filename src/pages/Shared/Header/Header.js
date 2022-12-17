@@ -49,7 +49,7 @@ const Header = () => {
          draggable: true,
          progress: undefined,
          theme: "dark",
-         delay: 1500,
+         delay: 1000,
       });
    };
 
@@ -134,19 +134,6 @@ const Header = () => {
                         </NavLink>
                      </li>
                   )}
-                  {user.email && (
-                     <li>
-                        <NavLink
-                           className="hover:border-b-2 text-black p-2 mx-2 hover:text-gray-600 rounded-lg"
-                           to="/managebookings"
-                           style={({ isActive }) =>
-                              isActive ? activeStyle : undefined
-                           }
-                        >
-                           Manage My Bookings
-                        </NavLink>
-                     </li>
-                  )}
                </ul>
             </div>
 
@@ -201,19 +188,6 @@ const Header = () => {
                         }
                      >
                         My Bookings
-                     </NavLink>
-                  </li>
-               )}
-               {user.email && (
-                  <li>
-                     <NavLink
-                        className="lg:inline hidden hover:border-b-2 text-gray-200 p-2 mx-2 hover:text-gray-400 rounded-lg"
-                        to="/managebookings"
-                        style={({ isActive }) =>
-                           isActive ? activeStyle : undefined
-                        }
-                     >
-                        Manage My Bookings
                      </NavLink>
                   </li>
                )}

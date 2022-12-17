@@ -8,7 +8,6 @@ import Signin from "./pages/Signin/Signin";
 import RequireAuth from "./pages/Signin/RequireAuth";
 import Booknow from "./pages/Booknow/Booknow";
 import MyBookings from "./pages/MyBookings/MyBookings";
-import ManageAllBookings from "./pages/ManageAllBookings/ManageAllBookings";
 import { useLayoutEffect } from "react";
 import Signup from "./pages/Signup/Signup";
 import Notfound from "./pages/notfound";
@@ -16,7 +15,10 @@ import AdminDashboard from "./pages/AdminDashboard/AdminDashboard";
 import DashIndex from "./pages/AdminDashboard/DashIndex";
 import ManageBookings from "./pages/AdminDashboard/ManageBookings";
 import AddServices from "./pages/AdminDashboard/AddServices";
-import MakeAdmin from "./pages/AdminDashboard/MakeAdmin";
+import MakeAdmin from "./pages/AdminDashboard/CustomerReview";
+import ManageDestinations from "./pages/AdminDashboard/ManageDestinations";
+import Users from "./pages/AdminDashboard/Users";
+import CustomerReview from "./pages/AdminDashboard/CustomerReview";
 
 function App() {
    const Wrapper = ({ children }) => {
@@ -53,14 +55,6 @@ function App() {
                      }
                   ></Route>
                   <Route
-                     path="/managebookings"
-                     element={
-                        <RequireAuth>
-                           <ManageAllBookings></ManageAllBookings>
-                        </RequireAuth>
-                     }
-                  ></Route>
-                  <Route
                      path="/admin-dashboard"
                      element={
                         <RequireAuth>
@@ -74,13 +68,18 @@ function App() {
                         element={<ManageBookings></ManageBookings>}
                      ></Route>
                      <Route
+                        path="manage-destinations"
+                        element={<ManageDestinations></ManageDestinations>}
+                     ></Route>
+                     <Route
                         path="add-services"
                         element={<AddServices></AddServices>}
                      ></Route>
                      <Route
-                        path="make-admin"
-                        element={<MakeAdmin></MakeAdmin>}
+                        path="customer-review"
+                        element={<CustomerReview></CustomerReview>}
                      ></Route>
+                     <Route path="users" element={<Users></Users>}></Route>
                   </Route>
                   <Route path="/signin" element={<Signin></Signin>}></Route>
                   <Route

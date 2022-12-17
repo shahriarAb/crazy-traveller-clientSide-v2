@@ -17,6 +17,7 @@ const useFirebase = () => {
    const [user, setUser] = useState({});
    const [error, setError] = useState("");
    const [isLoading, setIsLoading] = useState(true);
+   const [token, setToken] = useState("");
 
    const googleProvider = new GoogleAuthProvider();
    const auth = getAuth();
@@ -29,8 +30,10 @@ const useFirebase = () => {
             const newUser = { email, displayName: userName };
             setUser(newUser);
             //add user to database
-            // addUserToDB(userName, email, 'POST');
-            navigate(from, { replace: true });
+            addUserToDB(userName, email);
+            if (token) {
+               navigate(from, { replace: true });
+            }
             setError("");
             //send name of the new user to firebase
             updateProfile(auth.currentUser, {
@@ -55,7 +58,9 @@ const useFirebase = () => {
       setIsLoading(true);
       signInWithEmailAndPassword(auth, email, password)
          .then(() => {
-            navigate(from, { replace: true });
+            if (token) {
+               navigate(from, { replace: true });
+            }
             setError("");
          })
          .catch((error) => {
@@ -70,10 +75,12 @@ const useFirebase = () => {
       signInWithPopup(auth, googleProvider)
          .then((result) => {
             const user = result.user;
-            navigate(from, { replace: true });
+            if (token) {
+               navigate(from, { replace: true });
+            }
             setError("");
             //add user to db
-            // addUserToDB(user.displayName, user.email, 'PUT');
+            addUserToDB(user.displayName, user.email);
          })
          .catch((error) => {
             setError(error.message);
@@ -98,23 +105,30 @@ const useFirebase = () => {
       signOut(auth)
          .then(() => {
             setUser({});
+            localStorage.removeItem("accessToken");
          })
          .catch((error) => setError(error.message))
          .finally(() => setIsLoading(false));
    };
 
-   //add all user to database
-   // const addUserToDB = (displayName, email, method) => {
-   //     const user = { displayName, email }
-   //     fetch('https://salty-headland-52267.herokuapp.com/users', {
-   //         method: method,
-   //         headers: {
-   //             'content-type': 'application/json'
-   //         },
-   //         body: JSON.stringify(user)
-   //     })
-   //         .then()
-   // }
+   // add all user to database
+   const addUserToDB = (displayName, email) => {
+      const user = { displayName, email };
+      fetch(`http://localhost:5500/user/${email}`, {
+         method: "PUT",
+         headers: {
+            "content-type": "application/json",
+         },
+         body: JSON.stringify(user),
+      })
+         .then((res) => res.json())
+         .then((data) => {
+            console.log(data);
+            const accessToken = data.token;
+            localStorage.setItem("accessToken", accessToken);
+            setToken(accessToken);
+         });
+   };
 
    return {
       user,

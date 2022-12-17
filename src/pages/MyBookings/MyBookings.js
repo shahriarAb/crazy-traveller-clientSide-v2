@@ -4,12 +4,10 @@ import useAuth from "../hooks/useAuth";
 import Loading from "../Shared/Loading";
 
 const MyBookings = () => {
-   const { user } = useAuth();
+   const { user, signingOut } = useAuth();
    const [allbookings, setAllbookings] = useState([]);
    const [isLoading, setIsLoading] = useState(true);
    const navigate = useNavigate();
-
-   console.log(allbookings);
 
    useEffect(() => {
       setIsLoading(true);
@@ -23,6 +21,7 @@ const MyBookings = () => {
             if (res.status === 401 || res.status === 403) {
                navigate("/");
                localStorage.removeItem("accessToken");
+               signingOut();
             }
             return res.json();
          })
@@ -30,7 +29,7 @@ const MyBookings = () => {
             setAllbookings(data);
             setIsLoading(false);
          });
-   }, [user.email, navigate]);
+   }, [user.email, navigate, signingOut]);
 
    const handleCancel = (id) => {
       const proceedToDelete = window.confirm(
@@ -109,8 +108,8 @@ const MyBookings = () => {
                               : `btn bg-red-600 hover:shadow-lg`
                         }
                      >
-                        <i class="fas fa-info-circle mr-2 text-xl"></i> Cancel
-                        Book
+                        <i className="fas fa-info-circle mr-2 text-xl"></i>{" "}
+                        Cancel Book
                      </button>
                   </div>
                   <br />

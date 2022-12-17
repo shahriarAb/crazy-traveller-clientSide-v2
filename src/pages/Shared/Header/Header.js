@@ -4,10 +4,12 @@ import logo from "../../../images/logo.png";
 import useAuth from "../../hooks/useAuth";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import useAdmin from "../../hooks/useAdmin";
 
 const Header = () => {
    const { user, signingOut, error } = useAuth();
    const [navbarScroll, setNavbarScroll] = useState(false);
+   const [admin] = useAdmin(user);
 
    useEffect(() => {
       if (user.email) {
@@ -108,7 +110,7 @@ const Header = () => {
                         Home
                      </NavLink>
                   </li>
-                  {user.email && (
+                  {user.email && admin && (
                      <li>
                         <NavLink
                            className="hover:border-b-2 text-black p-2 mx-2 hover:text-gray-400 rounded-lg"
@@ -131,6 +133,19 @@ const Header = () => {
                            }
                         >
                            My Bookings
+                        </NavLink>
+                     </li>
+                  )}
+                  {user.email && (
+                     <li>
+                        <NavLink
+                           className="hover:border-b-2 text-black p-2 mx-2 hover:text-gray-600 rounded-lg"
+                           to="/post-review"
+                           style={({ isActive }) =>
+                              isActive ? activeStyle : undefined
+                           }
+                        >
+                           Post A Review
                         </NavLink>
                      </li>
                   )}
@@ -165,7 +180,7 @@ const Header = () => {
                      Home
                   </NavLink>
                </li>
-               {user.email && (
+               {user.email && admin && (
                   <li>
                      <NavLink
                         className="lg:inline hidden hover:border-b-2 text-gray-200 p-2 mx-3 hover:text-gray-400 rounded-lg"
@@ -191,10 +206,23 @@ const Header = () => {
                      </NavLink>
                   </li>
                )}
+               {user.email && (
+                  <li>
+                     <NavLink
+                        className="lg:inline hidden hover:border-b-2 text-gray-200 p-2 mx-2 hover:text-gray-400 rounded-lg"
+                        to="/post-review"
+                        style={({ isActive }) =>
+                           isActive ? activeStyle : undefined
+                        }
+                     >
+                        Post A Review
+                     </NavLink>
+                  </li>
+               )}
             </ul>
 
             {user.email ? (
-               <div className="dropdown dropdown-end lg:mr-14 mr-4 lg:ml-8">
+               <div className="dropdown dropdown-end lg:mr-14 mr-4 lg:ml-6">
                   <label
                      tabIndex={0}
                      className="btn btn-ghost btn-circle avatar"

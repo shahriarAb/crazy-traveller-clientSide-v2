@@ -15,10 +15,11 @@ import AdminDashboard from "./pages/AdminDashboard/AdminDashboard";
 import DashIndex from "./pages/AdminDashboard/DashIndex";
 import ManageBookings from "./pages/AdminDashboard/ManageBookings";
 import AddServices from "./pages/AdminDashboard/AddServices";
-import MakeAdmin from "./pages/AdminDashboard/CustomerReview";
 import ManageDestinations from "./pages/AdminDashboard/ManageDestinations";
 import Users from "./pages/AdminDashboard/Users";
 import CustomerReview from "./pages/AdminDashboard/CustomerReview";
+import RequireAdmin from "./pages/Signin/RequireAdmin";
+import PostReview from "./pages/PostReview/PostReview";
 
 function App() {
    const Wrapper = ({ children }) => {
@@ -55,11 +56,19 @@ function App() {
                      }
                   ></Route>
                   <Route
-                     path="/admin-dashboard"
+                     path="/post-review"
                      element={
                         <RequireAuth>
-                           <AdminDashboard></AdminDashboard>
+                           <PostReview></PostReview>
                         </RequireAuth>
+                     }
+                  ></Route>
+                  <Route
+                     path="/admin-dashboard"
+                     element={
+                        <RequireAdmin>
+                           <AdminDashboard></AdminDashboard>
+                        </RequireAdmin>
                      }
                   >
                      <Route index element={<DashIndex></DashIndex>}></Route>

@@ -18,7 +18,7 @@ export default function AdminDashboard() {
                   htmlFor="dashboard-sidebar"
                   className="ml-3 lg:hidden cursor-pointer"
                >
-                  <i class="fas fa-bars text-2xl mt-1"></i>
+                  <i className="fas fa-bars text-2xl mt-1"></i>
                </label>
                <h2 className="text-4xl font-bold text-red-800 ml-5">
                   Admin's Dashboard
@@ -35,33 +35,35 @@ export default function AdminDashboard() {
             <ul className="menu p-4 w-68 bg-base-100 text-base-content">
                <li className="my-1">
                   <Link to="/admin-dashboard">
-                     <i class="fas fa-home text-xl"></i> Dashboard
+                     <i className="fas fa-home text-xl"></i> Dashboard
                   </Link>
                </li>
                <li className="my-1">
                   <Link to="/admin-dashboard/manage-all-bookings">
-                     <i class="fas fa-tools text-xl"></i> Manage All Bookings
+                     <i className="fas fa-tools text-xl"></i> Manage All
+                     Bookings
                   </Link>
                </li>
                <li className="my-1">
                   <Link to="/admin-dashboard/manage-destinations">
-                     <i class="fas fa-hammer text-xl"></i> Manage Destinations
+                     <i className="fas fa-hammer text-xl"></i> Manage
+                     Destinations
                   </Link>
                </li>
                <li className="my-1">
                   <Link to="/admin-dashboard/add-services">
-                     <i class="fas fa-plus-square text-xl"></i> Add a New
+                     <i className="fas fa-plus-square text-xl"></i> Add a New
                      Destination
                   </Link>
                </li>
                <li className="my-1">
                   <Link to="/admin-dashboard/customer-review">
-                     Customer Review
+                     <i className="fas fa-comments text-xl"></i> Customer Review
                   </Link>
                </li>
                <li className="my-1">
                   <Link to="/admin-dashboard/users">
-                     <i class="fas fa-users text-xl"></i> All Users
+                     <i className="fas fa-users text-xl"></i> All Users
                   </Link>
                </li>
                <li>
@@ -70,7 +72,8 @@ export default function AdminDashboard() {
                         className="btn bg-white text-black hover:bg-black hover:text-white"
                         onClick={signingOut}
                      >
-                        <i class="fas fa-sign-out-alt text-xl mr-4"></i>Log out
+                        <i className="fas fa-sign-out-alt text-xl mr-4"></i>Log
+                        out
                      </button>
                   </div>
                </li>

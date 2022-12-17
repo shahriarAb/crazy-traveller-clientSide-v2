@@ -52,9 +52,9 @@ const Signin = () => {
                      />
                      <div className="absolute right-1 text-xl cursor-pointer">
                         {showPass === false ? (
-                           <i class="fas fa-eye" onClick={toggle}></i>
+                           <i className="fas fa-eye" onClick={toggle}></i>
                         ) : (
-                           <i class="fas fa-eye-slash" onClick={toggle}></i>
+                           <i className="fas fa-eye-slash" onClick={toggle}></i>
                         )}
                      </div>
                   </div>
@@ -95,7 +95,7 @@ const Signin = () => {
                </button>
                <br />
                <button className="border-2 border-blue-400 hover:bg-blue-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50 py-1 px-14 rounded-full text-blue-400 font-semibold shadow-md text-lg mt-4">
-                  <i class="fab fa-facebook-f"></i> Continue with Facebook
+                  <i className="fab fa-facebook-f"></i> Continue with Facebook
                </button>
             </div>
          </div>

@@ -1,25 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useQuery } from "react-query";
 import Loading from "../Shared/Loading";
 import SingleUser from "./SingleUser";
 
 const Users = () => {
-   const [users, setUsers] = useState([]);
-   const [isLoading, setIsLoading] = useState(true);
-
-   useEffect(() => {
-      const fetchData = async () => {
-         const res = await fetch("http://localhost:5500/users", {
-            method: "GET",
-            headers: {
-               authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-            },
-         });
-         const data = await res.json();
-         setUsers(data);
-         setIsLoading(false);
-      };
-      fetchData();
-   }, []);
+   const {
+      data: users,
+      isLoading,
+      refetch,
+   } = useQuery("users", () =>
+      fetch("http://localhost:5500/users", {
+         method: "GET",
+         headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+         },
+      }).then((res) => res.json())
+   );
 
    if (isLoading) {
       return <Loading></Loading>;
@@ -37,7 +33,7 @@ const Users = () => {
                      <th></th>
                      <th>User Name</th>
                      <th>Email Address</th>
-                     <th>Make Someone Admin</th>
+                     <th>Handle Role</th>
                      <th>Delete User</th>
                   </tr>
                </thead>
@@ -47,6 +43,7 @@ const Users = () => {
                         key={user._id}
                         user={user}
                         index={index}
+                        refetch={refetch}
                      ></SingleUser>
                   ))}
                </tbody>

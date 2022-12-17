@@ -54,10 +54,12 @@ const useFirebase = () => {
    };
 
    //login exisitng user
-   const loginUser = (email, password, navigate, from) => {
+   const loginUser = async (email, password, navigate, from) => {
       setIsLoading(true);
       signInWithEmailAndPassword(auth, email, password)
          .then(() => {
+            const user = auth.currentUser;
+            addUserToDB(user.displayName, email);
             if (token) {
                navigate(from, { replace: true });
             }
@@ -123,7 +125,6 @@ const useFirebase = () => {
       })
          .then((res) => res.json())
          .then((data) => {
-            console.log(data);
             const accessToken = data.token;
             localStorage.setItem("accessToken", accessToken);
             setToken(accessToken);

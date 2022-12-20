@@ -11,12 +11,6 @@ const ReviewSection = () => {
    const [reviews, setReviews] = useState([]);
    const [loading, setLoading] = useState(true);
 
-   const ratingFunction = {
-      size: 30,
-      value: 3,
-      edit: false,
-   };
-
    useEffect(() => {
       const fetchData = async () => {
          const res = await fetch("http://localhost:5500/user-reviews");
@@ -55,7 +49,7 @@ const ReviewSection = () => {
             >
                {reviews.map((review) => (
                   <SwiperSlide key={review._id}>
-                     <div className="grid justify-items-center border-2 bg-gradient-to-r from-purple-50 to-purple-200 border-purple-400 rounded-lg p-4 mb-10 mt-6 mx-9">
+                     <div className="grid justify-items-center border-2 bg-gradient-to-r from-purple-50 to-purple-200 border-purple-400 rounded-lg p-4 mb-10 mt-12 mx-9">
                         <h2 className="text-lg font-bold text-purple-900">
                            {review.userName}
                         </h2>

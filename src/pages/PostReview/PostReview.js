@@ -52,38 +52,42 @@ const PostReview = () => {
                rows={10}
             />
             {/* star rating */}
-            <div className="rating w-40 my-3">
-               <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 bg-orange-400"
-                  onClick={() => setRatingValue(1)}
-               />
-               <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 bg-orange-400"
-                  onClick={() => setRatingValue(2)}
-               />
-               <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 bg-orange-400"
-                  onClick={() => setRatingValue(3)}
-               />
-               <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 bg-orange-400"
-                  onClick={() => setRatingValue(4)}
-               />
-               <input
-                  type="radio"
-                  name="rating-2"
-                  className="mask mask-star-2 bg-orange-400"
-                  onClick={() => setRatingValue(5)}
-               />
+            <div className="flex my-5">
+               <p className="font-semibold text-lg">Rate us with star:</p>
+               <div className="rating w-40">
+                  <input
+                     type="radio"
+                     name="rating-2"
+                     className="mask mask-star-2 bg-orange-400"
+                     onClick={() => setRatingValue(1)}
+                  />
+                  <input
+                     type="radio"
+                     name="rating-2"
+                     className="mask mask-star-2 bg-orange-400"
+                     onClick={() => setRatingValue(2)}
+                  />
+                  <input
+                     type="radio"
+                     name="rating-2"
+                     className="mask mask-star-2 bg-orange-400"
+                     onClick={() => setRatingValue(3)}
+                  />
+                  <input
+                     type="radio"
+                     name="rating-2"
+                     className="mask mask-star-2 bg-orange-400"
+                     onClick={() => setRatingValue(4)}
+                  />
+                  <input
+                     type="radio"
+                     name="rating-2"
+                     className="mask mask-star-2 bg-orange-400"
+                     onClick={() => setRatingValue(5)}
+                  />
+               </div>
             </div>
+
             <input className="btn btn-primary font-bold" type="submit" />
          </form>
          <ToastContainer />

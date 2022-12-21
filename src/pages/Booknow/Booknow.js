@@ -67,7 +67,8 @@ const Booknow = () => {
             </article>
             <div className="my-6 flex justify-center">
                <button className="border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 py-2 px-8 rounded-lg shadow-md my-2 mr-6">
-                  <i className="fas fa-star-half-alt"></i> Rate this Service
+                  <i className="fas fa-star-half-alt"></i>
+                  <Link to="/post-review">Rate this Service</Link>
                </button>
                <button className="border-2 border-red-500 bg-red-500 text-white hover:bg-red-50 hover:text-red-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 py-2 px-8 rounded-lg shadow-md my-2 ml-6">
                   <Link to="/">Home</Link>

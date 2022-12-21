@@ -57,14 +57,8 @@ export default function AdminDashboard() {
                   </Link>
                </li>
                <li className="my-1">
-                  <Link to="/admin-dashboard/customer-review">
-                     <i className="fas fa-comments text-xl"></i> Manage Customer
-                     Review
-                  </Link>
-               </li>
-               <li className="my-1">
                   <Link to="/admin-dashboard/users">
-                     <i className="fas fa-users text-xl"></i> All Users
+                     <i className="fas fa-users text-xl"></i> Manage All Users
                   </Link>
                </li>
                <li>

@@ -17,7 +17,6 @@ import ManageBookings from "./pages/AdminDashboard/ManageBookings";
 import AddServices from "./pages/AdminDashboard/AddServices";
 import ManageDestinations from "./pages/AdminDashboard/ManageDestinations";
 import Users from "./pages/AdminDashboard/Users";
-import CustomerReview from "./pages/AdminDashboard/CustomerReview";
 import RequireAdmin from "./pages/Signin/RequireAdmin";
 import PostReview from "./pages/PostReview/PostReview";
 
@@ -83,10 +82,6 @@ function App() {
                      <Route
                         path="add-services"
                         element={<AddServices></AddServices>}
-                     ></Route>
-                     <Route
-                        path="customer-review"
-                        element={<CustomerReview></CustomerReview>}
                      ></Route>
                      <Route path="users" element={<Users></Users>}></Route>
                   </Route>

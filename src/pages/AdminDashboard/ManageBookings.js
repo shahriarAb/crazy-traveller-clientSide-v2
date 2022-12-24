@@ -116,6 +116,18 @@ const ManageBookings = () => {
                      <i className="fas fa-clock"></i> Time:{" "}
                      {booking.journey_time}
                   </span>
+                  <br className="lg:inline hidden" />
+                  <span className="lg:inline block">
+                     <i class="fas fa-calendar-alt"></i> Jouenry Date:{" "}
+                     {booking.journeyDate}
+                  </span>
+                  <span className="lg:ml-6 lg:inline block">
+                     <i className="fas fa-clock"></i> Time:{" "}
+                     {booking.journey_time}
+                  </span>
+                  <span className="lg:ml-6 lg:inline block">
+                     <i class="fas fa-tag"></i> Price: MRP {booking.price} /-
+                  </span>
                   <div className="flex justify-center mt-2">
                      <button
                         onClick={() => handleStatus(booking._id)}

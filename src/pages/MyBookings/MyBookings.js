@@ -57,7 +57,7 @@ const MyBookings = () => {
       return <Loading></Loading>;
    }
    return (
-      <div>
+      <div className="mb-40">
          <h2 className="ml-8 mt-8 text-2xl font-bold text-red-500">
             My all bookings
          </h2>
@@ -72,28 +72,27 @@ const MyBookings = () => {
                   key={myBooking._id}
                   className="bg-gray-100 mt-10 mx-16 p-6 rounded-md shadow-md font-semibold"
                >
-                  <span className="text-lg">
+                  <span className="text-lg lg:inline block text-start">
                      <i className="fas fa-map-marked-alt"></i> Destination:{" "}
                      {myBooking.destination}
                   </span>
-                  <span className="ml-6">
+                  <span className="lg:ml-6 lg:inline block text-start">
                      <i className="fas fa-igloo"></i> Package: 3 Days &bull; 2
                      Nights
                   </span>
-                  <span className="ml-6">
+                  <span className="lg:ml-6 lg:inline block text-start">
                      <i className="fas fa-phone-square"></i> Phone:{" "}
                      {myBooking.phone_number}
                   </span>
-                  <span className="ml-6">
+                  <span className="lg:ml-6 lg:inline block text-start">
                      <i className="fas fa-plane-departure"></i> Transport:{" "}
                      {myBooking.vehicles}
                   </span>
-                  <span className="ml-6">
-                     <i className="fas fa-clock"></i> Time:{" "}
-                     {myBooking.journey_time}
-                  </span>
+                  <button className="btn btn-success lg:float-right ml-4 lg:inline-block hidden">
+                     Pay now
+                  </button>
                   <div
-                     className="tooltip float-right"
+                     className="tooltip lg:float-right lg:inline-block hidden"
                      data-tip={
                         myBooking.status === "Approved"
                            ? "You can't cancel this booking now."
@@ -112,8 +111,22 @@ const MyBookings = () => {
                         Cancel Book
                      </button>
                   </div>
-                  <br />
-                  Status:
+                  <br className="lg:inline hidden" />
+                  <span className="lg:ml-6 lg:inline block text-start">
+                     <i class="fas fa-calendar-alt"></i> Jouenry Date:{" "}
+                     {myBooking.journeyDate}
+                  </span>
+                  <span className="lg:ml-6 lg:inline block text-start">
+                     <i className="fas fa-clock"></i> Time:{" "}
+                     {myBooking.journey_time}
+                  </span>
+                  <span className="lg:ml-6 mr-6 lg:inline block text-start">
+                     <i class="fas fa-tag"></i> Price: MRP{" "}
+                     <span className="font-bold">{myBooking.price}</span> /-
+                  </span>
+                  <span className="lg:ml-6 lg:inline block text-start">
+                     Status:
+                  </span>
                   <span
                      className={
                         myBooking.status === "Approved"
@@ -124,6 +137,30 @@ const MyBookings = () => {
                      {" "}
                      {myBooking.status}
                   </span>
+
+                  <button className="btn btn-success ml-4 block lg:hidden mb-3">
+                     Pay now
+                  </button>
+                  <div
+                     className="tooltip block lg:hidden text-start"
+                     data-tip={
+                        myBooking.status === "Approved"
+                           ? "You can't cancel this booking now."
+                           : "Cancel and delete the order before approval"
+                     }
+                  >
+                     <button
+                        onClick={() => handleCancel(myBooking._id)}
+                        className={
+                           myBooking.status === "Approved"
+                              ? "btn btn-disabled"
+                              : `btn bg-red-600 hover:shadow-lg`
+                        }
+                     >
+                        <i className="fas fa-info-circle mr-2 text-xl"></i>{" "}
+                        Cancel Book
+                     </button>
+                  </div>
                </div>
             ))
          )}

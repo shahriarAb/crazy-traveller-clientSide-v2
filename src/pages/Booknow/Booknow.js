@@ -10,13 +10,26 @@ import "react-toastify/dist/ReactToastify.css";
 const Booknow = () => {
    const { id } = useParams();
    const { user } = useAuth();
+   const [destination, setDestination] = useState({});
+
+   const price = destination.price;
+
+   useEffect(() => {
+      const uri = `http://localhost:5500/destination/${id}`;
+      fetch(uri)
+         .then((res) => res.json())
+         .then((data) => setDestination(data));
+   }, [id]);
+
    const {
       register,
       handleSubmit,
       formState: { errors },
    } = useForm();
+
    const onSubmit = (data) => {
-      data.status = "pending";
+      data.status = "Pending";
+      data.price = price;
       fetch("http://localhost:5500/bookings", {
          method: "POST",
          headers: {
@@ -38,14 +51,6 @@ const Booknow = () => {
             }
          });
    };
-
-   const [destination, setDestination] = useState({});
-   useEffect(() => {
-      const uri = `http://localhost:5500/destination/${id}`;
-      fetch(uri)
-         .then((res) => res.json())
-         .then((data) => setDestination(data));
-   }, [id]);
 
    return (
       <div className="m-6 lg:grid lg:grid-cols-2 gap-8">
@@ -77,7 +82,7 @@ const Booknow = () => {
          </div>
 
          <div className="shipment-container">
-            <div>
+            <div className="">
                <h2 className="text-center mb-4 font-semibold text-2xl text-red-400">
                   Fill this form to confirm your booking
                </h2>
@@ -91,6 +96,7 @@ const Booknow = () => {
                   />
                   <input defaultValue={user.email} {...register("email")} />
                   <input
+                     readOnly
                      defaultValue={destination.name}
                      {...register("destination", { required: true })}
                   />
@@ -104,26 +110,51 @@ const Booknow = () => {
                   {errors.phone_number && (
                      <span className="error">This field is required</span>
                   )}
+                  <input
+                     placeholder="Journey Date"
+                     type="date"
+                     {...register("journeyDate", { required: true })}
+                  />
+                  {errors.journeyDate && (
+                     <span className="error">This field is required</span>
+                  )}
+                  {/* <input
+                     readOnly
+                     title="Price. Can't be changed!"
+                     defaultValue={destination.price}
+                     {...register("price", { required: true })}
+                  />
+                  {errors.price && (
+                     <span className="error">
+                        This will be your total cost.
+                     </span>
+                  )} */}
                   <br />
                   <select
                      className="vehicles"
                      {...register("vehicles", { required: true })}
                   >
-                     <option value="none">Vehicles Options</option>
+                     <option value="">Vehicles Options</option>
                      <option value="Air">Air</option>
                      <option value="AC Bus">AC Bus</option>
                      <option value="Non AC Bus">Non AC BUS</option>
                      <option value="Train">Train</option>
                   </select>
+                  {errors.vehicles && (
+                     <span className="error">This field is required</span>
+                  )}
                   <br />
                   <select
                      className="vehicles"
                      {...register("journey_time", { required: true })}
                   >
-                     <option value="none">Journey Time</option>
+                     <option value="">Journey Time</option>
                      <option value="Day">Day</option>
                      <option value="Night">Night</option>
                   </select>
+                  {errors.journey_time && (
+                     <span className="error">This field is required</span>
+                  )}
                   <input
                      className="border-2 border-red-500 hover:bg-red-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 py-2 px-8 rounded-lg text-black shadow-md my-2 mr-6 cursor-pointer"
                      type="Submit"

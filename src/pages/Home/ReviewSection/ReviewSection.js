@@ -36,13 +36,24 @@ const ReviewSection = () => {
          <h2 className="text-4xl font-extrabold">OUR CUSTOMER SAYS</h2>
          <div className="mt-20">
             <Swiper
-               slidesPerView={3}
+               slidesPerView={1}
                spaceBetween={0}
                slidesPerGroup={1}
                loop={true}
                centeredSlides={true}
                pagination={{
                   clickable: true,
+               }}
+               breakpoints={{
+                  640: {
+                     slidesPerView: 1,
+                  },
+                  768: {
+                     slidesPerView: 3,
+                  },
+                  1024: {
+                     slidesPerView: 3,
+                  },
                }}
                navigation={true}
                modules={[Pagination, Navigation]}

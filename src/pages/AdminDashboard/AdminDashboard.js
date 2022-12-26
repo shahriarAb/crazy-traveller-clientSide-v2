@@ -6,7 +6,7 @@ export default function AdminDashboard() {
    const { signingOut } = useAuth();
 
    return (
-      <div className="drawer drawer-mobile">
+      <div className="drawer drawer-mobile mb-40">
          <input
             id="dashboard-sidebar"
             type="checkbox"
@@ -32,7 +32,7 @@ export default function AdminDashboard() {
                htmlFor="dashboard-sidebar"
                className="drawer-overlay"
             ></label>
-            <ul className="menu p-4 w-68 bg-base-100 text-base-content">
+            <ul className="menu p-4 w-80 bg-base-100 text-base-content">
                <li className="my-1">
                   <Link to="/admin-dashboard">
                      <i className="fas fa-home text-xl"></i> Dashboard

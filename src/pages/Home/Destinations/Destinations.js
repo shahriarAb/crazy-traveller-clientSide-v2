@@ -25,7 +25,7 @@ const Destinations = () => {
       return <Loading></Loading>;
    }
    return (
-      <div className="text-center mt-40 lg:px-20">
+      <div className="text-center lg:mt-40 mt-72 lg:px-20">
          <h4
             style={{ fontFamily: "Dancing Script, cursive" }}
             className="text-xl font-semibold text-red-400"

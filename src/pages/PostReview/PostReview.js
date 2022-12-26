@@ -35,7 +35,7 @@ const PostReview = () => {
    };
 
    return (
-      <div className="add-service my-20 ">
+      <div className="add-service mt-20 mb-60">
          <h2 className="my-6 text-center text-red-700 text-3xl lg:mt-16 font-bold">
             Post a review on Crazy Traveller
          </h2>

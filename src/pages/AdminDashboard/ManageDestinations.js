@@ -52,8 +52,10 @@ const ManageDestinations = () => {
 
    return (
       <div className="mt-20">
-         <h2 className="text-4xl font-extrabold">All destinations packages:</h2>
-         <div className="mt-8 lg:mx-8 lg:grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-3">
+         <h2 className="text-4xl font-extrabold lg:mx-0 mx-5">
+            All destinations packages:
+         </h2>
+         <div className="mt-8 lg:mx-8 mx-5 grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 lg:gap-3 gap-5">
             {destinations.map((destination) => (
                <div className="card bg-base-100 shadow-xl image-full">
                   <figure>

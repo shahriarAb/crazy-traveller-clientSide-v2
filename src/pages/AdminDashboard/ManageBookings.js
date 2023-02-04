@@ -9,7 +9,7 @@ const ManageBookings = () => {
 
    useEffect(() => {
       setIsLoading(true);
-      fetch("http://localhost:5500/bookings")
+      fetch("https://crazy-traveler-server.onrender.com/bookings")
          .then((res) => res.json())
          .then((data) => {
             setManageBookings(data);
@@ -22,7 +22,7 @@ const ManageBookings = () => {
          "Are you sure you want to delete this booking?"
       );
       if (proceedToDelete) {
-         const url = `http://localhost:5500/bookings/${id}`;
+         const url = `https://crazy-traveler-server.onrender.com/bookings/${id}`;
          fetch(url, {
             method: "DELETE",
          })
@@ -47,7 +47,7 @@ const ManageBookings = () => {
    };
 
    const handleStatus = (id) => {
-      const url = `http://localhost:5500/bookings/${id}`;
+      const url = `https://crazy-traveler-server.onrender.com/bookings/${id}`;
       fetch(url, {
          method: "PUT",
          headers: {

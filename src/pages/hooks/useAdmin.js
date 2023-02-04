@@ -9,7 +9,7 @@ const useAdmin = (user) => {
       const email = user?.email;
 
       if (email) {
-         fetch(`http://localhost:5500/admin/${email}`, {
+         fetch(`https://crazy-traveler-server.onrender.com/admin/${email}`, {
             method: "GET",
             headers: {
                "content-type": "application/json",

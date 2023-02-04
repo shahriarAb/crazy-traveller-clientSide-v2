@@ -4,7 +4,7 @@ import { toast, ToastContainer } from "react-toastify";
 const SingleUser = ({ user, index, refetch }) => {
    const { email, displayName, role } = user;
    const makeAdmin = () => {
-      fetch(`http://localhost:5500/user/admin/${email}`, {
+      fetch(`https://crazy-traveler-server.onrender.com/user/admin/${email}`, {
          method: "PUT",
          headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,

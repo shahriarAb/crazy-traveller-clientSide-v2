@@ -9,7 +9,9 @@ const ManageDestinations = () => {
 
    useEffect(() => {
       const fetchData = async () => {
-         const res = await fetch("http://localhost:5500/destinations");
+         const res = await fetch(
+            "https://crazy-traveler-server.onrender.com/destinations"
+         );
          const data = await res.json();
          setDestinations(data);
          setIsLoading(false);
@@ -22,7 +24,7 @@ const ManageDestinations = () => {
          "Are you sure want to delete this destination?"
       );
       if (deleteConfirm) {
-         const url = `http://localhost:5500/destination/${id}`;
+         const url = `https://crazy-traveler-server.onrender.com/destination/${id}`;
          fetch(url, {
             method: "DELETE",
          })

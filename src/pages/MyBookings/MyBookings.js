@@ -11,12 +11,15 @@ const MyBookings = () => {
 
    useEffect(() => {
       setIsLoading(true);
-      fetch(`http://localhost:5500/my-bookings?email=${user.email}`, {
-         mathod: "GET",
-         headers: {
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-         },
-      })
+      fetch(
+         `https://crazy-traveler-server.onrender.com/my-bookings?email=${user.email}`,
+         {
+            mathod: "GET",
+            headers: {
+               authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+         }
+      )
          .then((res) => {
             if (res.status === 401 || res.status === 403) {
                navigate("/");
@@ -36,7 +39,7 @@ const MyBookings = () => {
          "Are you sure you want to cancel this booking?"
       );
       if (proceedToDelete) {
-         const url = `http://localhost:5500/bookings/${id}`;
+         const url = `https://crazy-traveler-server.onrender.com/bookings/${id}`;
          fetch(url, {
             method: "DELETE",
          })

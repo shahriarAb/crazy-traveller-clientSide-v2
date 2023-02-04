@@ -15,7 +15,7 @@ const Booknow = () => {
    const price = destination.price;
 
    useEffect(() => {
-      const uri = `http://localhost:5500/destination/${id}`;
+      const uri = `https://crazy-traveler-server.onrender.com/destination/${id}`;
       fetch(uri)
          .then((res) => res.json())
          .then((data) => setDestination(data));
@@ -30,7 +30,7 @@ const Booknow = () => {
    const onSubmit = (data) => {
       data.status = "Pending";
       data.price = price;
-      fetch("http://localhost:5500/bookings", {
+      fetch("https://crazy-traveler-server.onrender.com/bookings", {
          method: "POST",
          headers: {
             "content-type": "application/json",

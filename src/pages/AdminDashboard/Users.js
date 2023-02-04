@@ -9,7 +9,7 @@ const Users = () => {
       isLoading,
       refetch,
    } = useQuery("users", () =>
-      fetch("http://localhost:5500/users", {
+      fetch("https://crazy-traveler-server.onrender.com/users", {
          method: "GET",
          headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,

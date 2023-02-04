@@ -167,6 +167,7 @@ const Header = () => {
             </Link>
          </div>
 
+         {/* for large or medium screen */}
          <div className="navbar-end lg:flex">
             <ul className="flex p-0">
                <li>

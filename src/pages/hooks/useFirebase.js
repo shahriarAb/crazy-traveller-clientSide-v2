@@ -116,7 +116,7 @@ const useFirebase = () => {
    // add all user to database
    const addUserToDB = (displayName, email) => {
       const user = { displayName, email };
-      fetch(`http://localhost:5500/user/${email}`, {
+      fetch(`https://crazy-traveler-server.onrender.com/user/${email}`, {
          method: "PUT",
          headers: {
             "content-type": "application/json",

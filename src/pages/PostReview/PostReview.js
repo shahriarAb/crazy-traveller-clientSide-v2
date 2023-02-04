@@ -11,7 +11,7 @@ const PostReview = () => {
    console.log(ratingValue);
 
    const onSubmit = (data) => {
-      fetch("http://localhost:5500/reviews", {
+      fetch("https://crazy-traveler-server.onrender.com/reviews", {
          method: "POST",
          headers: {
             "content-type": "application/json",

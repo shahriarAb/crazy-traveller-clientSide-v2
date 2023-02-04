@@ -13,7 +13,7 @@ const Destinations = () => {
 
    useEffect(() => {
       setIsLoading(true);
-      fetch("http://localhost:5500/destinations")
+      fetch("https://crazy-traveler-server.onrender.com/destinations")
          .then((res) => res.json())
          .then((data) => {
             setDestinations(data);

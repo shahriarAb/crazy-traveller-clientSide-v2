@@ -13,7 +13,9 @@ const ReviewSection = () => {
 
    useEffect(() => {
       const fetchData = async () => {
-         const res = await fetch("http://localhost:5500/user-reviews");
+         const res = await fetch(
+            "https://crazy-traveler-server.onrender.com/user-reviews"
+         );
          const data = await res.json();
          setReviews(data);
          setLoading(false);

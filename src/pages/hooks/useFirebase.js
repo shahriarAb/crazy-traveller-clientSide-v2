@@ -31,9 +31,7 @@ const useFirebase = () => {
             setUser(newUser);
             //add user to database
             addUserToDB(userName, email);
-            if (token) {
-               navigate(from, { replace: true });
-            }
+            navigate(from, { replace: true });
             setError("");
             //send name of the new user to firebase
             updateProfile(auth.currentUser, {
@@ -77,12 +75,10 @@ const useFirebase = () => {
       signInWithPopup(auth, googleProvider)
          .then((result) => {
             const user = result.user;
-            if (token) {
-               navigate(from, { replace: true });
-            }
-            setError("");
             //add user to db
             addUserToDB(user.displayName, user.email);
+            navigate(from, { replace: true });
+            setError("");
          })
          .catch((error) => {
             setError(error.message);
